@@ -18,6 +18,13 @@ void CloseSDL();
 
 int main(int argc, char* args[])
 {
+	if (InitSDL())
+	{
+		SDL_Delay(5000);
+	}
+
+	CloseSDL();
+
 	return 0;
 }
 
@@ -40,10 +47,19 @@ bool InitSDL()
 			cout << "Window was not created. Error: " << SDL_GetError();
 			return false;
 		}
+		else {
+			return true;
+		}
 	}
 }
 
 void CloseSDL()
 {
+	//release the window
+	SDL_DestroyWindow(g_window);
+	g_window = nullptr;
 
+	//quit SDL subsystems
+	IMG_Quit();
+	SDL_Quit();
 }
