@@ -32,6 +32,7 @@ int main(int argc, char* args[])
 		//Game Loop
 		while (!quit)
 		{
+			Render();
 			quit = Update();
 		}
 	}
@@ -64,6 +65,12 @@ bool InitSDL()
 				cout << "SDL_Image could not initialise. Error: " << IMG_GetError();
 				return false;
 			}
+			//Load the background texture
+			g_texture = LoadTextureFromFile("Images/test.bmp");
+			if (g_texture == nullptr)
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -93,6 +100,12 @@ void CloseSDL()
 	//quit SDL subsystems
 	IMG_Quit();
 	SDL_Quit();
+
+	//clear the texture
+	FreeTexture();
+	//release the renderer
+	SDL_DestroyRenderer(g_renderer);
+	g_renderer = nullptr;
 }
 
 bool Update()
@@ -156,9 +169,16 @@ SDL_Texture* LoadTextureFromFile(string path)
 		cout << "Unable to create texture from surface. Error: " << IMG_GetError();
 	}
 
-	return nullptr;
+	//Return the texture
+	return p_texture;
 }
 
 void FreeTexture()
 {
+	//check if the texture exists before removing it
+	if (g_texture != nullptr)
+	{
+		SDL_DestroyTexture(g_texture);
+		g_texture = nullptr;
+	}
 }
