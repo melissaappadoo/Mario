@@ -2,6 +2,16 @@
 #ifndef _COMMONS_H
 #define _COMMONS_H
 
+enum SCREENS
+{
+	SCREEN_INTRO,
+	SCREEN_MENU,
+	SCREEN_LEVEL1,
+	SCREEN_LEVEL2,
+	SCREEN_GAMEOVER,
+	SCREEN_HIGHSCORE
+};
+
 struct Vector2D
 {
 	float x;
@@ -18,16 +28,6 @@ struct Vector2D
 		x = initial_x;
 		y = initial_y;
 	}
-
-	enum SCREENS
-	{
-		SCREEN_INTRO,
-		SCREEN_MENU,
-		SCREEN_LEVEL1,
-		SCREEN_LEVEL2,
-		SCREEN_GAMEOVER,
-		SCREEN_HIGHSCORE
-	};
 };
 
-#endif // !_COMMONS_H
+#endif // _COMMONS_H

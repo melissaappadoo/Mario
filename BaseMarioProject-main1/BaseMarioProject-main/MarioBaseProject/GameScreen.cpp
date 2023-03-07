@@ -1,5 +1,10 @@
 #include "GameScreen.h"
 
+GameScreen::GameScreen()
+{
+
+}
+
 GameScreen::GameScreen(SDL_Renderer* renderer)
 {
 	m_renderer = renderer;

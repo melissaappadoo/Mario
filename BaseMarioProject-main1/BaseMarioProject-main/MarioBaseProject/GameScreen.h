@@ -10,6 +10,7 @@ protected:
 	SDL_Renderer* m_renderer;
 
 public:
+	GameScreen();
 	GameScreen(SDL_Renderer* renderer);
 	~GameScreen();
 
