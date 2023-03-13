@@ -1,6 +1,7 @@
 #include "GameScreenLevel1.h"
 #include <iostream>
 #include "Texture2D.h"
+#include "Collisions.h"
 
 bool GameScreenLevel1::SetUpLevel()
 {

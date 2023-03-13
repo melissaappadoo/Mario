@@ -12,6 +12,12 @@ enum SCREENS
 	SCREEN_HIGHSCORE
 };
 
+enum FACING
+{
+	FACING_LEFT,
+	FACING_RIGHT
+};
+
 struct Vector2D
 {
 	float x;
@@ -28,6 +34,14 @@ struct Vector2D
 		x = initial_x;
 		y = initial_y;
 	}
+};
+
+struct Rect2D (float x_pos, float y_pos, float width, float height)
+{
+	x = x_pos;
+	y = y_pos;
+	this->width = width;
+	this->height = height;
 };
 
 #endif // _COMMONS_H
