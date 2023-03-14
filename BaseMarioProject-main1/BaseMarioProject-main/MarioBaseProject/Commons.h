@@ -36,12 +36,21 @@ struct Vector2D
 	}
 };
 
-struct Rect2D (float x_pos, float y_pos, float width, float height)
+struct Rect2D 
 {
-	x = x_pos;
-	y = y_pos;
-	this->width = width;
-	this->height = height;
+	float x;
+	float y;
+	float width;
+	float height;
+
+	Rect2D(float x_pos, float y_pos, float width, float height)
+	{
+		x = x_pos;
+		y = y_pos;
+		this->width = width;
+		this->height = height;
+	}
+	
 };
 
 #endif // _COMMONS_H

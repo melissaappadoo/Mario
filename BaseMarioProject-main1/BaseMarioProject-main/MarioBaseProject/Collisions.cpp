@@ -4,6 +4,11 @@
 //initialise instance to nullptr
 Collisions* Collisions::m_instance = nullptr;
 
+Collisions::Collisions()
+{
+
+}
+
 Collisions::~Collisions()
 {
 }
