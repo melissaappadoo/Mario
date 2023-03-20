@@ -73,3 +73,7 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	//update character
 	mario->Update(deltaTime, e);
 }
+
+void GameScreenLevel1::UpdatePOWBlock()
+{
+}
