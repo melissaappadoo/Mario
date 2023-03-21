@@ -21,12 +21,13 @@ protected:
 	bool m_can_jump;
 	float m_jump_force;
 	float m_collision_radius;
+	FACING m_facing_direction;
+	float m_movement_speed;
+	Vector2D m_position;
+	Texture2D* m_texture;
 
 private:
 	SDL_Renderer* m_renderer;
-	Vector2D m_position;
-	Texture2D* m_texture;
-	FACING m_facing_direction;
 	LevelMap* m_current_level_map;
 
 public:
@@ -44,6 +45,8 @@ public:
 	Vector2D GetPosition();
 	float GetCollisionRadius();
 	Rect2D GetCollisionBox() {return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight()); }
+	bool IsJumping() { return true; };
+	void CancelJump() { m_jumping = false; };
 };
 
 #endif // !_CHARACTER_H

@@ -13,3 +13,7 @@
 #define MAP_HEIGHT 13
 #define TILE_WIDTH 32
 #define TILE_HEIGHT 32
+
+#define SHAKE_DURATION 1
+
+#define INJURED_TIME 2.5
