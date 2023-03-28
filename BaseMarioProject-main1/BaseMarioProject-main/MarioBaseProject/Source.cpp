@@ -3,6 +3,8 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
+#include <stdlib.h>
+//#include <SDL_ttf.h>
 
 #include "constants.h"
 #include "Texture2D.h"
@@ -35,6 +37,7 @@ int main(int argc, char* args[])
 		{
 			Mix_PlayMusic(g_music, -1);
 		}
+
 		game_screen_manager = new GameScreenManager(g_renderer, SCREEN_LEVEL1);
 		//set the old time
 		g_old_time = SDL_GetTicks();
