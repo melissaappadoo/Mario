@@ -15,6 +15,7 @@ Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_po
 	m_jump_force = 0.0f;
 	m_collision_radius = 15.0f;
 	m_current_level_map = map;
+	m_alive = true;
 	if (!m_texture->LoadFromFile(imagePath))
 	{
 		cout << "Failed to load character texture!" << endl;

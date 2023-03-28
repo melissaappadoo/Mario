@@ -25,6 +25,7 @@ protected:
 	float m_movement_speed;
 	Vector2D m_position;
 	Texture2D* m_texture;
+	bool m_alive;
 
 private:
 	SDL_Renderer* m_renderer;
@@ -47,6 +48,8 @@ public:
 	Rect2D GetCollisionBox() {return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight()); }
 	bool IsJumping() { return true; };
 	void CancelJump() { m_jumping = false; };
+	void SetAlive(bool isAlive) { m_alive = isAlive; }
+	bool GetAlive() { return m_alive; }
 };
 
 #endif // !_CHARACTER_H

@@ -19,6 +19,11 @@ public:
 
 	void TakeDamage();
 	void Jump();
+	
+	void Render() override;
+	void Update(float deltaTime, SDL_Event e) override;
+
+	bool GetInjured() { return m_injured; }
 };
 
 #endif // _CHARACTERKOOPA_H
