@@ -4,7 +4,7 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include <stdlib.h>
-//#include <SDL_ttf.h>
+#include <SDL_ttf.h>
 
 #include "constants.h"
 #include "Texture2D.h"
@@ -28,6 +28,7 @@ bool Update();
 void Render();
 void LoadMusic(string path);
 
+
 int main(int argc, char* args[])
 {
 	if (InitSDL())
@@ -36,6 +37,12 @@ int main(int argc, char* args[])
 		if (Mix_PlayingMusic() == 0)
 		{
 			Mix_PlayMusic(g_music, -1);
+		}
+
+		if (TTF_Init() == -1)
+		{
+			TTF_GetError();
+			return false;
 		}
 
 		game_screen_manager = new GameScreenManager(g_renderer, SCREEN_LEVEL1);
@@ -129,6 +136,8 @@ void CloseSDL()
 	//clear up music
 	Mix_FreeMusic(g_music);
 	g_music = nullptr;
+
+	TTF_Quit();
 }
 
 bool Update()
