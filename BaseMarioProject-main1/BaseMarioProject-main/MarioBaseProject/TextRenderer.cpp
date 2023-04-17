@@ -1,4 +1,5 @@
 #include "TextRenderer.h"
+#include <iostream>
 
 TextRenderer::TextRenderer(SDL_Renderer* renderer)
 {
@@ -23,7 +24,9 @@ bool TextRenderer::LoadFont(const string file_path, int fontSize, const string m
 	font = TTF_OpenFont(file_path.c_str(), fontSize);
 	if (font == nullptr)
 	{
-		
+		cout << "Unable to create font. Error: " << TTF_GetError();
 	}
-	return false;
+	
+
+	//SDL_Surface text_surface = TTF_RenderText_Solid
 }
