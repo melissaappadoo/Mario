@@ -27,6 +27,12 @@ bool GameScreenLevel1::SetUpLevel()
 	m_pow_block = new PowBlock(m_renderer, m_level_map);
 	m_screenshake = false;
 	m_background_yPos = 0.0f;
+
+	m_text = new TextRenderer(m_renderer);
+	if (!m_text->LoadFont("Fonts/kongtext.ttf", 15, message + std::to_string(score), {255, 0, 0, 255}))
+	{
+		std::cout << "Failed to load font" << std::endl;
+	}
 }
 
 void GameScreenLevel1::SetLevelMap()

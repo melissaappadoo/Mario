@@ -20,7 +20,7 @@ public:
 	~TextRenderer();
 
 	void Render(int x, int y);
-	bool LoadFont(const string file_path, int fontSize, const string message, SDL_Color color);
+	bool LoadFont(const string file_path, int fontSize, const string c_string, SDL_Color color);
 };
 
 #endif _TEXTRENDERER_H

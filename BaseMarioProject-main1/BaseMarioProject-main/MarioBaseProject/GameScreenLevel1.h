@@ -9,6 +9,7 @@
 #include "Character.h"
 #include "LevelMap.h"
 #include "CharacterKoopa.h"
+#include "TextRenderer.h"
 
 class Texture2D;
 class Character;
@@ -27,6 +28,10 @@ private:
 	float m_wobble;
 	float m_background_yPos;
 	vector<CharacterKoopa*> m_enemies;
+	TextRenderer* m_text;
+	const std::string message;
+	int score;
+	int old_score;
 
 	bool SetUpLevel();
 	void SetLevelMap();
