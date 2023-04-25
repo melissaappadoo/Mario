@@ -8,7 +8,7 @@ bool GameScreenLevel1::SetUpLevel()
 {
 	//load texture
 	m_background_texture = new Texture2D(m_renderer);
-	if (!m_background_texture->LoadFromFile("Images/test.bmp"))
+	if (!m_background_texture->LoadFromFile("Images/BackgroundMB.png"))
 	{
 		std::cout << "Failed to load background texture!" << std::endl;
 		return false;
@@ -85,7 +85,7 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 			if (m_enemies[i]->GetPosition().y > 300.0f)
 			{
 				if (m_enemies[i]->GetPosition().x < (float)(-m_enemies[i]->GetCollisionBox().width * 0.5f) || m_enemies[i]->GetPosition().x > SCREEN_WIDTH - (float)(m_enemies[i]->GetCollisionBox().width * 0.55f))
-					m_enemies[i]->SetAlive(false);
+					m_enemies[i]->Flip(deltaTime);
 			}
 
 			m_enemies[i]->Update(deltaTime, e);
@@ -142,12 +142,12 @@ GameScreenLevel1::~GameScreenLevel1()
 	delete m_pow_block;
 	m_pow_block = nullptr;
 	m_enemies.clear();
+	delete m_text;
+	m_text = nullptr;
 }
 
 void GameScreenLevel1::Render()
 {
-	
-
 	//draw the background
 	m_background_texture->Render(Vector2D(0, m_background_yPos), SDL_FLIP_NONE);
 
@@ -160,6 +160,8 @@ void GameScreenLevel1::Render()
 	mario->Render();
 
 	m_pow_block->Render();
+
+	m_text->Render(0, 0);
 }
 
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
@@ -186,6 +188,12 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 			m_background_yPos = 0.0f;
 		}
 	}
+
+	if (m_text != nullptr && score != old_score)
+	{
+		old_score = score;
+		m_text->LoadFont("Fonts/kongtext.ttf", 15, message + std::to_string(score), { 255, 0, 0, 255 });
+	}
 }
 
 void GameScreenLevel1::UpdatePOWBlock()
@@ -200,7 +208,13 @@ void GameScreenLevel1::UpdatePOWBlock()
 				DoScreenShake();
 				m_pow_block->TakeHit();
 				mario->CancelJump();
+				UpdateScore(50);
 			}
 		}
 	}
+}
+
+void GameScreenLevel1::UpdateScore(int addscore)
+{
+	score += addscore;
 }

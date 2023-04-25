@@ -46,6 +46,7 @@ public:
 	void Render() override;
 	void Update(float deltaTime, SDL_Event e) override;
 	void UpdatePOWBlock();
+	void UpdateScore(int score);
 };
 
 #endif // _GAMESCREENLEVEL1_H

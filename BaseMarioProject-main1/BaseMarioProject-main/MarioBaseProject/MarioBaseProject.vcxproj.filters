@@ -58,6 +58,7 @@
     <Library Include="SDL2\SDL\SDL2_mixer.lib" />
     <Library Include="SDL2\SDL\SDL2main.lib" />
     <Library Include="SDL2\SDL\SDL2test.lib" />
+    <Library Include="SDL2\SDL\TTF\SDL2_ttf.lib" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h">

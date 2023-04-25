@@ -50,6 +50,7 @@ public:
 	void CancelJump() { m_jumping = false; };
 	void SetAlive(bool isAlive) { m_alive = isAlive; }
 	bool GetAlive() { return m_alive; }
+	void Flip(float deltaTime);
 };
 
 #endif // !_CHARACTER_H

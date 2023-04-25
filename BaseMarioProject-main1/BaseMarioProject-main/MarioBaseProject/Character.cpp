@@ -108,6 +108,8 @@ void Character::Update(float deltaTime, SDL_Event e)
 		//collided with ground so we jump again
 		m_can_jump = true;
 	}
+
+
 }
 
 void Character::MoveLeft(float deltaTime)
@@ -157,4 +159,18 @@ Vector2D Character::GetPosition()
 float Character::GetCollisionRadius()
 {
 	return m_collision_radius;
+}
+
+void Character::Flip(float deltaTime)
+{
+	if (m_facing_direction == FACING_LEFT)
+	{
+		m_facing_direction == FACING_RIGHT;
+		MoveRight(deltaTime);
+	}
+	else
+	{
+		m_facing_direction = FACING_LEFT;
+		MoveLeft(deltaTime);
+	}
 }

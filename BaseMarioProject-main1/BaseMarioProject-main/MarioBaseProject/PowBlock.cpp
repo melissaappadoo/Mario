@@ -1,4 +1,5 @@
 #include "PowBlock.h"
+#include "GameScreenLevel1.h"
 
 PowBlock::PowBlock(SDL_Renderer* renderer, LevelMap* map)
 {
