@@ -5,13 +5,13 @@ void CharacterKoopa::FlipRightwayUp()
 {
 	if (m_facing_direction == FACING_LEFT)
 	{
-		m_facing_direction == FACING_RIGHT;
+		m_facing_direction = FACING_RIGHT;
 		m_injured = false;
 		Jump();
 	}
 	else
 	{
-		m_facing_direction == FACING_LEFT;
+		m_facing_direction = FACING_LEFT;
 		m_injured = false;
 		Jump();
 	}
@@ -45,6 +45,18 @@ void CharacterKoopa::Jump()
 	}
 }
 
+void CharacterKoopa::Flip()
+{
+	if (m_facing_direction == FACING_LEFT)
+	{
+		m_facing_direction = FACING_RIGHT;
+	}
+	else
+	{
+		m_facing_direction = FACING_LEFT;
+	}
+}
+
 void CharacterKoopa::Render()
 {
 	int left = 0.0f;
@@ -68,7 +80,6 @@ void CharacterKoopa::Render()
 
 void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 {
-	Character::Update(deltaTime, e);
 
 	if (!m_injured)
 	{
@@ -95,4 +106,9 @@ void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 			FlipRightwayUp();
 		}
 	}
+
+
+	Character::Update(deltaTime, e);
+
+	
 }

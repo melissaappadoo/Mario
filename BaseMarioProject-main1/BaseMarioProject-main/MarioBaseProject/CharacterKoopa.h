@@ -19,7 +19,7 @@ public:
 
 	void TakeDamage();
 	void Jump();
-	
+	void Flip();
 	void Render() override;
 	void Update(float deltaTime, SDL_Event e) override;
 
