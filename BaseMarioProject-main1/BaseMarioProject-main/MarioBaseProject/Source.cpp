@@ -10,6 +10,7 @@
 #include "Texture2D.h"
 #include "Commons.h"
 #include "GameScreenManager.h"
+#include "SoundEffect.h"
 
 #include <iostream>
 using namespace std;
@@ -18,6 +19,7 @@ using namespace std;
 SDL_Window* g_window = nullptr;
 SDL_Renderer* g_renderer = nullptr;
 GameScreenManager* game_screen_manager;
+SoundEffect* sound_effect;
 Uint32 g_old_time;
 Mix_Music* g_music = nullptr;
 

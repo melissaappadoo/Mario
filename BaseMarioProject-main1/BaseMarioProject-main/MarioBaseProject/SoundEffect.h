@@ -10,6 +10,8 @@
 class SoundEffect
 {
 private:
+	static std::string musicFilename;
+
 	static SoundEffect* instance;
 
 	enum AudioState
@@ -36,13 +38,66 @@ private:
 				currentState = WAITING;
 			}
 		}
+		else
+		{
+			std::cerr << "Error initializing SDL audio subsystem";
+			currentState == ERROR;
+		}
 	}
 
-	SoundEffect();
+	SoundEffect()
+	{
+	}
+
+	SoundEffect(const SoundEffect&)
+	{
+	}
+
+	~SoundEffect()
+	{
+		Mix_CloseAudio();
+	}
+
+	SoundEffect& operator=(const SoundEffect&)
+	{
+	}
+
 
 public:
-	void PlayMusic(const std::string& fileName);
+	static SoundEffect* getInstance()
+	{
+		if (instance == 0)
+		{
+			instance = new SoundEffect;
+			SoundEffect::initAudioDevice();
+		}
+		return instance;
+	}
 
+	void PlayMusic(const std::string& fileName);
+	void PauseMusic();
+	void StopMusic();
+	void PlayFX(const std::string& fileName) const;
+
+	bool isPaused() const
+	{
+		return currentState == PAUSED;
+	}
+
+	bool isStopped() const
+	{
+		return currentState == STOPPED:
+	}
+
+	bool isPlaying() const
+	{
+		return currentState == PLAYING;
+	}
+
+	bool inErrorState() const
+	{
+		return currentState == ERROR;
+	}
 };
 
 #endif // !_SOUNDEFFECT_H
